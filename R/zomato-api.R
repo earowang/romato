@@ -1,4 +1,5 @@
 base_url <- "https://developers.zomato.com"
+ua <- httr::user_agent("https://github.com/earowang/romato")
 
 #' Zomato API
 #' 
@@ -70,7 +71,8 @@ zomato <- R6::R6Class(
             q = query, start = x, count = 20,
             lat = lat, lon = lon,
             sort = sort, order = order
-          )
+          ),
+          ua
         )
         parsed <- parse_json(resp)
         handle_error(resp, parsed$message)
@@ -85,7 +87,8 @@ zomato <- R6::R6Class(
         url = base_url,
         path = add_path("reviews"),
         config = httr::add_headers("user-key" = private$api_key),
-        query = list(res_id = res_id)
+        query = list(res_id = res_id),
+        ua
       )
       parsed <- parse_json(resp)
       handle_error(resp, parsed$message)
@@ -97,7 +100,8 @@ zomato <- R6::R6Class(
         url = base_url,
         path = add_path("restaurant"),
         config = httr::add_headers("user-key" = private$api_key),
-        query = list(res_id = res_id)
+        query = list(res_id = res_id),
+        ua
       )
       parsed <- parse_json(resp)
       handle_error(resp, parsed$message)
@@ -109,7 +113,8 @@ zomato <- R6::R6Class(
         url = base_url,
         path = add_path("dailymenu"),
         config = httr::add_headers("user-key" = private$api_key),
-        query = list(res_id = res_id)
+        query = list(res_id = res_id),
+        ua
       )
       parsed <- parse_json(resp)
       handle_error(resp, parsed$message)
@@ -121,7 +126,8 @@ zomato <- R6::R6Class(
         url = base_url,
         path = add_path("locations"),
         config = httr::add_headers("user-key" = private$api_key),
-        query = list(q = query, lat = lat, lon = lon)
+        query = list(q = query, lat = lat, lon = lon),
+        ua
       )
       parsed <- parse_json(resp)
       handle_error(resp, parsed$message)
@@ -133,7 +139,8 @@ zomato <- R6::R6Class(
         url = base_url,
         path = add_path("location_details"),
         config = httr::add_headers("user-key" = private$api_key),
-        query = list(entity_id = entity_id, entity_type = entity_type)
+        query = list(entity_id = entity_id, entity_type = entity_type),
+        ua
       )
       parsed <- parse_json(resp)
       handle_error(resp, parsed$message)
@@ -144,7 +151,8 @@ zomato <- R6::R6Class(
       resp <- httr::GET(
         url = base_url,
         path = add_path("categories"),
-        config = httr::add_headers("user-key" = private$api_key)
+        config = httr::add_headers("user-key" = private$api_key),
+        ua
       )
       parsed <- parse_json(resp)
       handle_error(resp, parsed$message)
@@ -156,7 +164,8 @@ zomato <- R6::R6Class(
         url = base_url,
         path = add_path("cities"),
         config = httr::add_headers("user-key" = private$api_key),
-        query = list(q = query, lat = lat, lon = lon, city_ids = city_ids)
+        query = list(q = query, lat = lat, lon = lon, city_ids = city_ids),
+        ua
       )
       parsed <- parse_json(resp)
       handle_error(resp, parsed$message)
@@ -168,7 +177,8 @@ zomato <- R6::R6Class(
         url = base_url,
         path = add_path("collections"),
         config = httr::add_headers("user-key" = private$api_key),
-        query = list(city_id = city_id, lat = lat, lon = lon)
+        query = list(city_id = city_id, lat = lat, lon = lon),
+        ua
       )
       parsed <- parse_json(resp)
       handle_error(resp, parsed$message)
@@ -180,7 +190,8 @@ zomato <- R6::R6Class(
         url = base_url,
         path = add_path("cuisines"),
         config = httr::add_headers("user-key" = private$api_key),
-        query = list(city_id = city_id, lat = lat, lon = lon)
+        query = list(city_id = city_id, lat = lat, lon = lon),
+        ua
       )
       parsed <- parse_json(resp)
       handle_error(resp, parsed$message)
@@ -192,7 +203,8 @@ zomato <- R6::R6Class(
         url = base_url,
         path = add_path("establishments"),
         config = httr::add_headers("user-key" = private$api_key),
-        query = list(city_id = city_id, lat = lat, lon = lon)
+        query = list(city_id = city_id, lat = lat, lon = lon),
+        ua
       )
       parsed <- parse_json(resp)
       handle_error(resp, parsed$message)
@@ -204,7 +216,8 @@ zomato <- R6::R6Class(
         url = base_url,
         path = add_path("geocode"),
         config = httr::add_headers("user-key" = private$api_key),
-        query = list(lat = lat, lon = lon)
+        query = list(lat = lat, lon = lon),
+        ua
       )
       parsed <- parse_json(resp)
       handle_error(resp, parsed$message)

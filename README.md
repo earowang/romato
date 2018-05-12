@@ -16,7 +16,8 @@ devtools::install_github("earowang/romato")
 
 ## Usage
 
-First of all, you need an API key to access Zomato, which you can sign up [here](https://developers.zomato.com/api).
+First of all, you need an API key to access Zomato, which you can sign
+up [here](https://developers.zomato.com/api).
 
 ``` r
 library(romato)
