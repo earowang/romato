@@ -11,9 +11,11 @@ base_url <- "https://developers.zomato.com"
 #' 2. restaurant(res_id)
 #' 3. reviews(res_id)
 #' 4. search(query, lat = NULL, lon = NULL, sort = NULL, order = NULL)
+#'
 #' **Location:**
 #' 1. location_details(query, lat = NULL, lon = NULL)
 #' 2. locations(entity_id, entity_type)
+#'
 #' **Common:**
 #' 1. categories()
 #' 2. cities(query, lat = NULL, lon = NULL, city_ids = NULL)
@@ -24,6 +26,7 @@ base_url <- "https://developers.zomato.com"
 #'
 #' @name zomato
 #' @examples
+#' \dontrun{
 #' zmt <- zomato$new("your-api-key")
 #' zmt
 #' bbb <- zmt$search(query = "Brother Budan Baba Melbourne")
@@ -41,6 +44,7 @@ base_url <- "https://developers.zomato.com"
 #' zmt$cuisines(259)
 #' zmt$establishments(259)
 #' zmt$geocode(-37.8136, 144.9631)
+#' }
 NULL
 
 #' @export

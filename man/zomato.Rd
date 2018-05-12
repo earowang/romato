@@ -15,10 +15,16 @@ sign up the key \href{https://developers.zomato.com/api}{here}.
 \item restaurant(res_id)
 \item reviews(res_id)
 \item search(query, lat = NULL, lon = NULL, sort = NULL, order = NULL)
+}
+
 \strong{Location:}
+\enumerate{
 \item location_details(query, lat = NULL, lon = NULL)
 \item locations(entity_id, entity_type)
+}
+
 \strong{Common:}
+\enumerate{
 \item categories()
 \item cities(query, lat = NULL, lon = NULL, city_ids = NULL)
 \item collections(city_id = NULL, lat = NULL, lon = NULL)
@@ -29,6 +35,7 @@ sign up the key \href{https://developers.zomato.com/api}{here}.
 }
 
 \examples{
+\dontrun{
 zmt <- zomato$new("your-api-key")
 zmt
 bbb <- zmt$search(query = "Brother Budan Baba Melbourne")
@@ -46,4 +53,5 @@ zmt$collections(259)
 zmt$cuisines(259)
 zmt$establishments(259)
 zmt$geocode(-37.8136, 144.9631)
+}
 }

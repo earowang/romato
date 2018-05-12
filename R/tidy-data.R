@@ -1,3 +1,5 @@
+globalVariables("timestamp")
+
 # remove some columns (e.g. links to zomato review)
 rm_col <- function(data) {
   cn <- names(data)
