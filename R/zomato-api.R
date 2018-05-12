@@ -245,10 +245,10 @@ zomato <- R6::R6Class(
       triangle <- crayon::make_style("darkgrey")("\u25B6")
       bullet <- crayon::green(crayon::bold("\u2022"))
       search <- "search(
-      query, lat = NULL, lon = NULL, radius = NULL, cuisines = NULL, 
-      establishment_type = NULL, collection_id = NULL, category = NULL, 
-      sort = NULL, order = NULL
-    )\n" 
+     query, lat = NULL, lon = NULL, radius = NULL, cuisines = NULL, 
+     establishment_type = NULL, collection_id = NULL, category = NULL, 
+     sort = NULL, order = NULL
+   )\n" 
       cat(
         crayon::red(crayon::bold("<Zomato API>")), "\n",
         triangle, crayon::bold("Restaurants:"), "\n",
