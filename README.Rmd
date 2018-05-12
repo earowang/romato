@@ -1,0 +1,51 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+# romato
+
+Interact Zomato with R
+
+## Installation
+
+You can install the development version of romato from [Github](https://github.com/earowang/romato) with:
+
+``` r
+devtools::install_github("earowang/romato")
+```
+
+## Usage
+
+```{r example}
+library(romato)
+zmt <- zomato$new(api_key = "your-api-key")
+zmt
+```
+
+```r
+bbb <- zmt$search(query = "Brother Budan Baba Melbourne")
+zmt$reviews(res_id = bbb$id[1])
+zmt$restaurant(res_id = bbb$id[1])
+zmt$dailymenu(res_id = 16507624)
+
+zmt$locations(query = "Melbourne")
+zmt$locations(query = "Melbourne", -37.8136, 144.9631)
+zmt$location_details(93747, "zone")
+
+zmt$categories()
+zmt$cities(query = "Melbourne")
+zmt$collections(259)
+zmt$cuisines(259)
+zmt$establishments(259)
+zmt$geocode(-37.8136, 144.9631)
+```

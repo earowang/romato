@@ -1,0 +1,17 @@
+Package: romato
+Version: 0.0.0.9000
+Title: API to Zomato
+Description: Provides API to Zomato.
+Authors@R: 
+    person("Earo", "Wang", email = "earo.wang@gmail.com", role = c("aut", "cre"))
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+ByteCompile: true
+Imports: 
+    httr,
+    jsonlite,
+    R6,
+    crayon
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.0.1
