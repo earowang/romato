@@ -28,10 +28,10 @@ zmt
 #>  1. dailymenu(res_id)
 #>  2. restaurant(res_id)
 #>  3. reviews(res_id)
-#>  4. search(query, lat = NULL, lon = NULL, sort = NULL, order = NULL)
+#>  4. search(query, lat = NULL, lon = NULL)
 #>  Location: 
-#>  1. location_details(query, lat = NULL, lon = NULL)
-#>  2. locations(entity_id, entity_type)
+#>  1. locations(query, lat = NULL, lon = NULL)
+#>  2. location_details(entity_id, entity_type)
 #>  Common: 
 #>  1. categories()
 #>  2. cities(query, lat = NULL, lon = NULL, city_ids = NULL)

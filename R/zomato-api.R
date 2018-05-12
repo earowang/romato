@@ -14,8 +14,8 @@ ua <- httr::user_agent("https://github.com/earowang/romato")
 #' 4. search(query, lat = NULL, lon = NULL, sort = NULL, order = NULL)
 #'
 #' **Location:**
-#' 1. location_details(query, lat = NULL, lon = NULL)
-#' 2. locations(entity_id, entity_type)
+#' 1. locations(query, lat = NULL, lon = NULL)
+#' 2. location_details(entity_id, entity_type)
 #'
 #' **Common:**
 #' 1. categories()
@@ -24,6 +24,14 @@ ua <- httr::user_agent("https://github.com/earowang/romato")
 #' 4. cuisines(city_id = NULL, lat = NULL, lon = NULL)
 #' 5. establishments(city_id = NULL, lat = NULL, lon = NULL)
 #' 6. geocode(lat, lon)
+#'
+#' @section Arguments:
+#' * `res_id`, `entity_id`, `city_id`: identifiers in integer
+#' * `query`: string that you search for
+#' * `lat`, `lon`: geo coordinates in double
+#' * `entity_type`: string
+#' * `sort`: `NULL`, "cost", "rating", "real_distance"
+#' * `order`: `NULL`, "asc", "desc"
 #'
 #' @name zomato
 #' @examples
@@ -61,7 +69,11 @@ zomato <- R6::R6Class(
       private$api_key <- api_key
     },
 
-    search = function(query, lat = NULL, lon = NULL, sort = NULL, order = NULL) {
+    search = function(
+      query, lat = NULL, lon = NULL, radius = NULL, cuisines = NULL, 
+      establishment_type = NULL, collection_id = NULL, category = NULL,
+      sort = NULL, order = NULL
+    ) {
       lst_df <- lapply(seq(0, 80, by = 20), function(x) {
         resp <- httr::GET(
           url = base_url,
@@ -69,8 +81,9 @@ zomato <- R6::R6Class(
           config = httr::add_headers("user-key" = private$api_key),
           query = list(
             q = query, start = x, count = 20,
-            lat = lat, lon = lon,
-            sort = sort, order = order
+            lat = lat, lon = lon, radius = radius, cuisines = cuisines,
+            establishment_type = establishment_type, category = category,
+            collection_id = collection_id, sort = sort, order = order
           ),
           ua
         )
@@ -235,10 +248,10 @@ zomato <- R6::R6Class(
         "1. dailymenu(res_id)\n",
         "2. restaurant(res_id)\n",
         "3. reviews(res_id)\n",
-        "4. search(query, lat = NULL, lon = NULL, sort = NULL, order = NULL)\n",
+        "4. search(query, lat = NULL, lon = NULL)\n",
         crayon::bold("Location:"), "\n",
-        "1. location_details(query, lat = NULL, lon = NULL)\n",
-        "2. locations(entity_id, entity_type)\n",
+        "1. locations(query, lat = NULL, lon = NULL)\n",
+        "2. location_details(entity_id, entity_type)\n",
         crayon::bold("Common:"), "\n",
         "1. categories()\n",
         "2. cities(query, lat = NULL, lon = NULL, city_ids = NULL)\n",

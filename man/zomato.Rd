@@ -19,8 +19,8 @@ sign up the key \href{https://developers.zomato.com/api}{here}.
 
 \strong{Location:}
 \enumerate{
-\item location_details(query, lat = NULL, lon = NULL)
-\item locations(entity_id, entity_type)
+\item locations(query, lat = NULL, lon = NULL)
+\item location_details(entity_id, entity_type)
 }
 
 \strong{Common:}
@@ -31,6 +31,18 @@ sign up the key \href{https://developers.zomato.com/api}{here}.
 \item cuisines(city_id = NULL, lat = NULL, lon = NULL)
 \item establishments(city_id = NULL, lat = NULL, lon = NULL)
 \item geocode(lat, lon)
+}
+}
+
+\section{Arguments}{
+
+\itemize{
+\item \code{res_id}, \code{entity_id}, \code{city_id}: identifiers in integer
+\item \code{query}: string that you search for
+\item \code{lat}, \code{lon}: geo coordinates in double
+\item \code{entity_type}: string
+\item \code{sort}: \code{NULL}, "cost", "rating", "real_distance"
+\item \code{order}: \code{NULL}, "asc", "desc"
 }
 }
 
