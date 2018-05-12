@@ -239,7 +239,7 @@ zomato <- R6::R6Class(
 )
 
 parse_json <- function(response) {
-  parsed <- jsonlite::fromJSON(
+  jsonlite::fromJSON(
     httr::content(
       response, as = "text", type = "application/json", encoding = "UTF-8"
     ),
