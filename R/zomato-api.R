@@ -243,7 +243,7 @@ zomato <- R6::R6Class(
 
     print = function(...) {
       triangle <- crayon::make_style("darkgrey")("\u25B6")
-      check <- crayon::green(crayon::bold("\u2714"))
+      bullet <- crayon::green(crayon::bold("\u2022"))
       search <- "search(
       query, lat = NULL, lon = NULL, radius = NULL, cuisines = NULL, 
       establishment_type = NULL, collection_id = NULL, category = NULL, 
@@ -252,20 +252,20 @@ zomato <- R6::R6Class(
       cat(
         crayon::red(crayon::bold("<Zomato API>")), "\n",
         triangle, crayon::bold("Restaurants:"), "\n",
-        check, "dailymenu(res_id)\n",
-        check, "restaurant(res_id)\n",
-        check, "reviews(res_id)\n",
-        check, search,
+        bullet, "dailymenu(res_id)\n",
+        bullet, "restaurant(res_id)\n",
+        bullet, "reviews(res_id)\n",
+        bullet, search,
         triangle, crayon::bold("Location:"), "\n",
-        check, "locations(query, lat = NULL, lon = NULL)\n",
-        check, "location_details(entity_id, entity_type)\n",
+        bullet, "locations(query, lat = NULL, lon = NULL)\n",
+        bullet, "location_details(entity_id, entity_type)\n",
         triangle, crayon::bold("Common:"), "\n",
-        check, "categories()\n",
-        check, "cities(query, lat = NULL, lon = NULL, city_ids = NULL)\n",
-        check, "collections(city_id = NULL, lat = NULL, lon = NULL)\n",
-        check, "cuisines(city_id = NULL, lat = NULL, lon = NULL)\n",
-        check, "establishments(city_id = NULL, lat = NULL, lon = NULL)\n",
-        check, "geocode(lat, lon)"
+        bullet, "categories()\n",
+        bullet, "cities(query, lat = NULL, lon = NULL, city_ids = NULL)\n",
+        bullet, "collections(city_id = NULL, lat = NULL, lon = NULL)\n",
+        bullet, "cuisines(city_id = NULL, lat = NULL, lon = NULL)\n",
+        bullet, "establishments(city_id = NULL, lat = NULL, lon = NULL)\n",
+        bullet, "geocode(lat, lon)"
       )
     }
   )

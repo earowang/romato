@@ -25,24 +25,24 @@ zmt <- zomato$new(api_key = "your-api-key")
 zmt
 #> <Zomato API> 
 #>  ▶ Restaurants: 
-#>  ✔ dailymenu(res_id)
-#>  ✔ restaurant(res_id)
-#>  ✔ reviews(res_id)
-#>  ✔ search(
+#>  • dailymenu(res_id)
+#>  • restaurant(res_id)
+#>  • reviews(res_id)
+#>  • search(
 #>       query, lat = NULL, lon = NULL, radius = NULL, cuisines = NULL, 
 #>       establishment_type = NULL, collection_id = NULL, category = NULL, 
 #>       sort = NULL, order = NULL
 #>     )
 #>  ▶ Location: 
-#>  ✔ locations(query, lat = NULL, lon = NULL)
-#>  ✔ location_details(entity_id, entity_type)
+#>  • locations(query, lat = NULL, lon = NULL)
+#>  • location_details(entity_id, entity_type)
 #>  ▶ Common: 
-#>  ✔ categories()
-#>  ✔ cities(query, lat = NULL, lon = NULL, city_ids = NULL)
-#>  ✔ collections(city_id = NULL, lat = NULL, lon = NULL)
-#>  ✔ cuisines(city_id = NULL, lat = NULL, lon = NULL)
-#>  ✔ establishments(city_id = NULL, lat = NULL, lon = NULL)
-#>  ✔ geocode(lat, lon)
+#>  • categories()
+#>  • cities(query, lat = NULL, lon = NULL, city_ids = NULL)
+#>  • collections(city_id = NULL, lat = NULL, lon = NULL)
+#>  • cuisines(city_id = NULL, lat = NULL, lon = NULL)
+#>  • establishments(city_id = NULL, lat = NULL, lon = NULL)
+#>  • geocode(lat, lon)
 ```
 
 ``` r
