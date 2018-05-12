@@ -242,23 +242,30 @@ zomato <- R6::R6Class(
     },
 
     print = function(...) {
+      triangle <- crayon::make_style("darkgrey")("\u25B6")
+      check <- crayon::green(crayon::bold("\u2714"))
+      search <- "search(
+      query, lat = NULL, lon = NULL, radius = NULL, cuisines = NULL, 
+      establishment_type = NULL, collection_id = NULL, category = NULL, 
+      sort = NULL, order = NULL
+    )\n" 
       cat(
-        crayon::red("<Zomato API>"), "\n",
-        crayon::bold("Restaurants:"), "\n",
-        "1. dailymenu(res_id)\n",
-        "2. restaurant(res_id)\n",
-        "3. reviews(res_id)\n",
-        "4. search(query, lat = NULL, lon = NULL)\n",
-        crayon::bold("Location:"), "\n",
-        "1. locations(query, lat = NULL, lon = NULL)\n",
-        "2. location_details(entity_id, entity_type)\n",
-        crayon::bold("Common:"), "\n",
-        "1. categories()\n",
-        "2. cities(query, lat = NULL, lon = NULL, city_ids = NULL)\n",
-        "3. collections(city_id = NULL, lat = NULL, lon = NULL)\n",
-        "4. cuisines(city_id = NULL, lat = NULL, lon = NULL)\n",
-        "5. establishments(city_id = NULL, lat = NULL, lon = NULL)\n",
-        "6. geocode(lat, lon)"
+        crayon::red(crayon::bold("<Zomato API>")), "\n",
+        triangle, crayon::bold("Restaurants:"), "\n",
+        check, "dailymenu(res_id)\n",
+        check, "restaurant(res_id)\n",
+        check, "reviews(res_id)\n",
+        check, search,
+        triangle, crayon::bold("Location:"), "\n",
+        check, "locations(query, lat = NULL, lon = NULL)\n",
+        check, "location_details(entity_id, entity_type)\n",
+        triangle, crayon::bold("Common:"), "\n",
+        check, "categories()\n",
+        check, "cities(query, lat = NULL, lon = NULL, city_ids = NULL)\n",
+        check, "collections(city_id = NULL, lat = NULL, lon = NULL)\n",
+        check, "cuisines(city_id = NULL, lat = NULL, lon = NULL)\n",
+        check, "establishments(city_id = NULL, lat = NULL, lon = NULL)\n",
+        check, "geocode(lat, lon)"
       )
     }
   )

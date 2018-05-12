@@ -24,21 +24,25 @@ library(romato)
 zmt <- zomato$new(api_key = "your-api-key")
 zmt
 #> <Zomato API> 
-#>  Restaurants: 
-#>  1. dailymenu(res_id)
-#>  2. restaurant(res_id)
-#>  3. reviews(res_id)
-#>  4. search(query, lat = NULL, lon = NULL)
-#>  Location: 
-#>  1. locations(query, lat = NULL, lon = NULL)
-#>  2. location_details(entity_id, entity_type)
-#>  Common: 
-#>  1. categories()
-#>  2. cities(query, lat = NULL, lon = NULL, city_ids = NULL)
-#>  3. collections(city_id = NULL, lat = NULL, lon = NULL)
-#>  4. cuisines(city_id = NULL, lat = NULL, lon = NULL)
-#>  5. establishments(city_id = NULL, lat = NULL, lon = NULL)
-#>  6. geocode(lat, lon)
+#>  ▶ Restaurants: 
+#>  ✔ dailymenu(res_id)
+#>  ✔ restaurant(res_id)
+#>  ✔ reviews(res_id)
+#>  ✔ search(
+#>       query, lat = NULL, lon = NULL, radius = NULL, cuisines = NULL, 
+#>       establishment_type = NULL, collection_id = NULL, category = NULL, 
+#>       sort = NULL, order = NULL
+#>     )
+#>  ▶ Location: 
+#>  ✔ locations(query, lat = NULL, lon = NULL)
+#>  ✔ location_details(entity_id, entity_type)
+#>  ▶ Common: 
+#>  ✔ categories()
+#>  ✔ cities(query, lat = NULL, lon = NULL, city_ids = NULL)
+#>  ✔ collections(city_id = NULL, lat = NULL, lon = NULL)
+#>  ✔ cuisines(city_id = NULL, lat = NULL, lon = NULL)
+#>  ✔ establishments(city_id = NULL, lat = NULL, lon = NULL)
+#>  ✔ geocode(lat, lon)
 ```
 
 ``` r
