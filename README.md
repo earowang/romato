@@ -3,7 +3,7 @@
 
 # romato
 
-Interact Zomato with R
+Query the Zomato API with R
 
 ## Installation
 
@@ -29,13 +29,13 @@ zmt
 #>  • restaurant(res_id)
 #>  • reviews(res_id)
 #>  • search(
-#>      query, lat = NULL, lon = NULL, radius = NULL, cuisines = NULL, 
+#>      query = NULL, lat = NULL, lon = NULL, radius = NULL, cuisines = NULL, 
 #>      establishment_type = NULL, collection_id = NULL, category = NULL, 
 #>      sort = NULL, order = NULL
 #>    )
 #>  ▶ Location: 
-#>  • locations(query, lat = NULL, lon = NULL)
 #>  • location_details(entity_id, entity_type)
+#>  • locations(query, lat = NULL, lon = NULL)
 #>  ▶ Common: 
 #>  • categories()
 #>  • cities(query, lat = NULL, lon = NULL, city_ids = NULL)
