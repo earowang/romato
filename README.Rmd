@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 ```
 # romato
 
-Interact Zomato with R
+Query the Zomato API with R
 
 ## Installation
 

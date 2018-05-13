@@ -2,7 +2,7 @@
 % Please edit documentation in R/zomato-api.R
 \name{zomato}
 \alias{zomato}
-\title{Zomato API}
+\title{Query the Zomato API}
 \description{
 An API key is needed to bridge communication between R and Zomato. You can
 sign up the key \href{https://developers.zomato.com/api}{here}.
@@ -10,27 +10,70 @@ sign up the key \href{https://developers.zomato.com/api}{here}.
 \section{Methods}{
 
 \strong{Restaurants:}
-\enumerate{
-\item dailymenu(res_id)
-\item restaurant(res_id)
-\item reviews(res_id)
-\item search(query, lat = NULL, lon = NULL, sort = NULL, order = NULL)
+\itemize{
+\item \code{dailymenu(res_id)}
+\itemize{
+\item Get daily menu using Zomato restaurant ID.
+}
+\item \code{restaurant(res_id)}
+\itemize{
+\item Get detailed restaurant information using Zomato restaurant ID.
+}
+\item \code{reviews(res_id)}
+\itemize{
+\item Get restaurant reviews using the Zomato restaurant ID. Only 5 latest
+reviews are available under the Basic API plan.
+}
+\item \code{search( query = NULL, lat = NULL, lon = NULL, radius = NULL, cuisines = NULL, establishment_type = NULL, collection_id = NULL, category = NULL, sort = NULL, order = NULL )}
+\itemize{
+\item The location input can be specified using Zomato location ID or coordinates.
+cuisine/establishment/ collection IDs can be obtained from respective
+api calls.
+}
 }
 
 \strong{Location:}
-\enumerate{
-\item locations(query, lat = NULL, lon = NULL)
-\item location_details(entity_id, entity_type)
+\itemize{
+\item \code{location_details(entity_id, entity_type)}
+\itemize{
+\item Get Foodie Index, Nightlife Index, Top Cuisines and Best rated
+restaurants in a given location
+}
+\item \code{locations(query, lat = NULL, lon = NULL)}
+\itemize{
+\item Search for Zomato locations by keyword. Provide coordinates to get better
+search results.
+}
 }
 
 \strong{Common:}
-\enumerate{
-\item categories()
-\item cities(query, lat = NULL, lon = NULL, city_ids = NULL)
-\item collections(city_id = NULL, lat = NULL, lon = NULL)
-\item cuisines(city_id = NULL, lat = NULL, lon = NULL)
-\item establishments(city_id = NULL, lat = NULL, lon = NULL)
-\item geocode(lat, lon)
+\itemize{
+\item \code{categories()}
+\itemize{
+\item Get a list of categories. List of all restaurants categorized under a
+particular restaurant type can be obtained using /search API with
+}
+\item \code{cities(query, lat = NULL, lon = NULL, city_ids = NULL)}
+\itemize{
+\item Find the Zomato ID and other details for a city.
+}
+\item \code{collections(city_id = NULL, lat = NULL, lon = NULL)}
+\itemize{
+\item Returns Zomato Restaurant Collections in a city.
+}
+\item \code{cuisines(city_id = NULL, lat = NULL, lon = NULL)}
+\itemize{
+\item Get a list of all cuisines of restaurants listed in a city.
+}
+\item \code{establishments(city_id = NULL, lat = NULL, lon = NULL)}
+\itemize{
+\item Get a list of restaurant types in a city.
+}
+\item \code{geocode(lat, lon)}
+\itemize{
+\item Get Foodie and Nightlife Index, list of popular cuisines and nearby
+restaurants around the given coordinates.
+}
 }
 }
 
@@ -43,6 +86,7 @@ sign up the key \href{https://developers.zomato.com/api}{here}.
 \item \code{entity_type}: string
 \item \code{sort}: \code{NULL}, "cost", "rating", "real_distance"
 \item \code{order}: \code{NULL}, "asc", "desc"
+\item Parameters without defaults are required to specify.
 }
 }
 
@@ -66,4 +110,7 @@ zmt$cuisines(259)
 zmt$establishments(259)
 zmt$geocode(-37.8136, 144.9631)
 }
+}
+\references{
+\link{https://developers.zomato.com/documentation}
 }

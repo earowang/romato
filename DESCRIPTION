@@ -1,7 +1,7 @@
 Package: romato
-Version: 0.0.0.9000
+Version: 0.1.0
 Title: API to Zomato
-Description: Provides API to Zomato.
+Description: Query the Zomato API.
 Authors@R: 
     person("Earo", "Wang", email = "earo.wang@gmail.com", role = c("aut", "cre"))
 License: MIT + file LICENSE
