@@ -2,7 +2,7 @@ base_url <- "https://developers.zomato.com"
 ua <- httr::user_agent("https://github.com/earowang/romato")
 
 #' Query the Zomato API
-#' 
+#'
 #' An API key is needed to bridge communication between R and Zomato. You can
 #' sign up the key [here](https://developers.zomato.com/api).
 #'
@@ -13,30 +13,30 @@ ua <- httr::user_agent("https://github.com/earowang/romato")
 #' * `restaurant(res_id)`
 #'   - Get detailed restaurant information using Zomato restaurant ID.
 #' * `reviews(res_id)`
-#'   - Get restaurant reviews using the Zomato restaurant ID. Only 5 latest 
-#'     reviews are available under the Basic API plan. 
+#'   - Get restaurant reviews using the Zomato restaurant ID. Only 5 latest
+#'     reviews are available under the Basic API plan.
 #' * `search(
-#'      query = NULL, lat = NULL, lon = NULL, radius = NULL, cuisines = NULL, 
+#'      query = NULL, lat = NULL, lon = NULL, radius = NULL, cuisines = NULL,
 #'      establishment_type = NULL, collection_id = NULL, category = NULL,
 #'      sort = NULL, order = NULL
-#'    )` 
-#'   - The location input can be specified using Zomato location ID or coordinates. 
-#'     cuisine/establishment/ collection IDs can be obtained from respective 
+#'    )`
+#'   - The location input can be specified using Zomato location ID or coordinates.
+#'     cuisine/establishment/ collection IDs can be obtained from respective
 #'     api calls.
-#' 
+#'
 #'
 #' **Location:**
 #' * `location_details(entity_id, entity_type)`
-#'   - Get Foodie Index, Nightlife Index, Top Cuisines and Best rated 
+#'   - Get Foodie Index, Nightlife Index, Top Cuisines and Best rated
 #'     restaurants in a given location
 #' * `locations(query, lat = NULL, lon = NULL)`
-#'   - Search for Zomato locations by keyword. Provide coordinates to get better 
+#'   - Search for Zomato locations by keyword. Provide coordinates to get better
 #'     search results.
 #'
 #' **Common:**
 #' * `categories()`
-#'   - Get a list of categories. List of all restaurants categorized under a 
-#'     particular restaurant type can be obtained using /search API with 
+#'   - Get a list of categories. List of all restaurants categorized under a
+#'     particular restaurant type can be obtained using /search API with
 #;     Category ID as inputs.
 #' * `cities(query, lat = NULL, lon = NULL, city_ids = NULL)`
 #'   - Find the Zomato ID and other details for a city.
@@ -47,7 +47,7 @@ ua <- httr::user_agent("https://github.com/earowang/romato")
 #' * `establishments(city_id = NULL, lat = NULL, lon = NULL)`
 #'   - Get a list of restaurant types in a city.
 #' * `geocode(lat, lon)`
-#'   - Get Foodie and Nightlife Index, list of popular cuisines and nearby 
+#'   - Get Foodie and Nightlife Index, list of popular cuisines and nearby
 #'     restaurants around the given coordinates.
 #'
 #' @section Arguments:
@@ -59,7 +59,7 @@ ua <- httr::user_agent("https://github.com/earowang/romato")
 #' * `order`: `NULL`, "asc", "desc"
 #' * Parameters without defaults are required to specify.
 #'
-#' @references [https://developers.zomato.com/documentation]
+#' @references <https://developers.zomato.com/documentation>
 #'
 #' @name zomato
 #' @examples
@@ -70,11 +70,11 @@ ua <- httr::user_agent("https://github.com/earowang/romato")
 #' zmt$reviews(res_id = bbb$id[1])
 #' zmt$restaurant(res_id = bbb$id[1])
 #' zmt$dailymenu(res_id = 16507624)
-#' 
+#'
 #' zmt$locations(query = "Melbourne")
 #' zmt$locations(query = "Melbourne", -37.8136, 144.9631)
 #' zmt$location_details(93747, "zone")
-#' 
+#'
 #' zmt$categories()
 #' zmt$cities(query = "Melbourne")
 #' zmt$collections(259)
@@ -98,7 +98,7 @@ zomato <- R6::R6Class(
     },
 
     search = function(
-      query = NULL, lat = NULL, lon = NULL, radius = NULL, cuisines = NULL, 
+      query = NULL, lat = NULL, lon = NULL, radius = NULL, cuisines = NULL,
       establishment_type = NULL, collection_id = NULL, category = NULL,
       sort = NULL, order = NULL
     ) {
@@ -278,10 +278,10 @@ zomato <- R6::R6Class(
       triangle <- crayon::make_style("darkgrey")("\u25B6")
       bullet <- crayon::green(crayon::bold("\u2022"))
       search <- "search(
-     query = NULL, lat = NULL, lon = NULL, radius = NULL, cuisines = NULL, 
-     establishment_type = NULL, collection_id = NULL, category = NULL, 
+     query = NULL, lat = NULL, lon = NULL, radius = NULL, cuisines = NULL,
+     establishment_type = NULL, collection_id = NULL, category = NULL,
      sort = NULL, order = NULL
-   )\n" 
+   )\n"
       cat(
         crayon::red(crayon::bold("<Zomato API>")), "\n",
         triangle, crayon::bold("Restaurants:"), "\n",

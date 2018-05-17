@@ -112,5 +112,5 @@ zmt$geocode(-37.8136, 144.9631)
 }
 }
 \references{
-\link{https://developers.zomato.com/documentation}
+\url{https://developers.zomato.com/documentation}
 }
