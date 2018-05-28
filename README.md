@@ -29,9 +29,9 @@ zmt
 #>  • restaurant(res_id)
 #>  • reviews(res_id)
 #>  • search(
-#>      query = NULL, lat = NULL, lon = NULL, radius = NULL, cuisines = NULL, 
-#>      establishment_type = NULL, collection_id = NULL, category = NULL, 
-#>      sort = NULL, order = NULL
+#>      query = NULL, entity_id = NULL, entity_type = NULL, lat = NULL, lon = NULL, 
+#>      radius = NULL, cuisines = NULL, establishment_type = NULL, 
+#>      collection_id = NULL, category = NULL, sort = NULL, order = NULL
 #>    )
 #>  ▶ Location: 
 #>  • location_details(entity_id, entity_type)

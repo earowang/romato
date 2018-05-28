@@ -98,9 +98,9 @@ zomato <- R6::R6Class(
     },
 
     search = function(
-      query = NULL, lat = NULL, lon = NULL, radius = NULL, cuisines = NULL,
-      establishment_type = NULL, collection_id = NULL, category = NULL,
-      sort = NULL, order = NULL
+      query = NULL, entity_id = NULL, entity_type = NULL, lat = NULL, lon = NULL, 
+      radius = NULL, cuisines = NULL, establishment_type = NULL, 
+      collection_id = NULL, category = NULL, sort = NULL, order = NULL
     ) {
       lst_df <- lapply(seq(0, 80, by = 20), function(x) {
         resp <- httr::GET(
@@ -108,10 +108,11 @@ zomato <- R6::R6Class(
           path = add_path("search"),
           config = httr::add_headers("user-key" = private$api_key),
           query = list(
-            q = query, start = x, count = 20,
-            lat = lat, lon = lon, radius = radius, cuisines = cuisines,
-            establishment_type = establishment_type, category = category,
-            collection_id = collection_id, sort = sort, order = order
+            q = query, entity_id = entity_id, entity_type = entity_type,
+            start = x, count = 20, lat = lat, lon = lon, radius = radius, 
+            cuisines = cuisines, establishment_type = establishment_type, 
+            category = category, collection_id = collection_id, sort = sort, 
+            order = order
           ),
           ua
         )
@@ -278,9 +279,9 @@ zomato <- R6::R6Class(
       triangle <- crayon::make_style("darkgrey")("\u25B6")
       bullet <- crayon::green(crayon::bold("\u2022"))
       search <- "search(
-     query = NULL, lat = NULL, lon = NULL, radius = NULL, cuisines = NULL,
-     establishment_type = NULL, collection_id = NULL, category = NULL,
-     sort = NULL, order = NULL
+     query = NULL, entity_id = NULL, entity_type = NULL, lat = NULL, lon = NULL, 
+     radius = NULL, cuisines = NULL, establishment_type = NULL, 
+     collection_id = NULL, category = NULL, sort = NULL, order = NULL
    )\n"
       cat(
         crayon::red(crayon::bold("<Zomato API>")), "\n",
