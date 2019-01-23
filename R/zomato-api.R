@@ -66,12 +66,10 @@ ua <- httr::user_agent("https://github.com/earowang/romato")
 #' \dontrun{
 #' zmt <- zomato$new("your-api-key")
 #' zmt
-#' bbb <- zmt$search(query = "Brother Budan Baba Melbourne")
-#' zmt$reviews(res_id = bbb$id[1])
-#' zmt$restaurant(res_id = bbb$id[1])
-#' zmt$dailymenu(res_id = 16507624)
+#' mugen <- zmt$search(query = "Mugen Ramen & Bar", lat = -37.81, lon = 144.96)
+#' zmt$reviews(res_id = mugen$id[1])
+#' zmt$restaurant(res_id = mugen$id[1])
 #'
-#' zmt$locations(query = "Melbourne")
 #' zmt$locations(query = "Melbourne", -37.8136, 144.9631)
 #' zmt$location_details(93747, "zone")
 #'
@@ -98,8 +96,8 @@ zomato <- R6::R6Class(
     },
 
     search = function(
-      query = NULL, entity_id = NULL, entity_type = NULL, lat = NULL, lon = NULL, 
-      radius = NULL, cuisines = NULL, establishment_type = NULL, 
+      query = NULL, entity_id = NULL, entity_type = NULL, lat = NULL, lon = NULL,
+      radius = NULL, cuisines = NULL, establishment_type = NULL,
       collection_id = NULL, category = NULL, sort = NULL, order = NULL
     ) {
       lst_df <- lapply(seq(0, 80, by = 20), function(x) {
@@ -109,9 +107,9 @@ zomato <- R6::R6Class(
           config = httr::add_headers("user-key" = private$api_key),
           query = list(
             q = query, entity_id = entity_id, entity_type = entity_type,
-            start = x, count = 20, lat = lat, lon = lon, radius = radius, 
-            cuisines = cuisines, establishment_type = establishment_type, 
-            category = category, collection_id = collection_id, sort = sort, 
+            start = x, count = 20, lat = lat, lon = lon, radius = radius,
+            cuisines = cuisines, establishment_type = establishment_type,
+            category = category, collection_id = collection_id, sort = sort,
             order = order
           ),
           ua
@@ -120,11 +118,14 @@ zomato <- R6::R6Class(
         handle_error(resp, parsed$message)
         rm_col(parsed$restaurants)
       })
-      common_col <- Reduce(intersect, lapply(lst_df, names))
+      vec_names <- lapply(lst_df, names)
+      null_lst <- vapply(vec_names, is.null, logical(1))
+      has_names <- vec_names[!null_lst]
+      common_col <- Reduce(intersect, has_names)
       if (is.null(common_col)) {
         stop("No results were found.", call. = FALSE)
       }
-      lst_df <- lapply(lst_df, function(x) x[, common_col, drop = FALSE])
+      lst_df <- lapply(lst_df[!null_lst], function(x) x[, common_col, drop = FALSE])
       df <- do.call("rbind", lst_df)
       tidy_search(df)
     },
@@ -279,8 +280,8 @@ zomato <- R6::R6Class(
       triangle <- crayon::make_style("darkgrey")("\u25B6")
       bullet <- crayon::green(crayon::bold("\u2022"))
       search <- "search(
-     query = NULL, entity_id = NULL, entity_type = NULL, lat = NULL, lon = NULL, 
-     radius = NULL, cuisines = NULL, establishment_type = NULL, 
+     query = NULL, entity_id = NULL, entity_type = NULL, lat = NULL, lon = NULL,
+     radius = NULL, cuisines = NULL, establishment_type = NULL,
      collection_id = NULL, category = NULL, sort = NULL, order = NULL
    )\n"
       cat(

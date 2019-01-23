@@ -29,8 +29,8 @@ zmt
 #>  • restaurant(res_id)
 #>  • reviews(res_id)
 #>  • search(
-#>      query = NULL, entity_id = NULL, entity_type = NULL, lat = NULL, lon = NULL, 
-#>      radius = NULL, cuisines = NULL, establishment_type = NULL, 
+#>      query = NULL, entity_id = NULL, entity_type = NULL, lat = NULL, lon = NULL,
+#>      radius = NULL, cuisines = NULL, establishment_type = NULL,
 #>      collection_id = NULL, category = NULL, sort = NULL, order = NULL
 #>    )
 #>  ▶ Location: 
@@ -46,12 +46,10 @@ zmt
 ```
 
 ``` r
-bbb <- zmt$search(query = "Brother Budan Baba Melbourne")
-zmt$reviews(res_id = bbb$id[1])
-zmt$restaurant(res_id = bbb$id[1])
-zmt$dailymenu(res_id = 16507624)
+mugen <- zmt$search(query = "Mugen Ramen & Bar", lat = -37.81, lon = 144.96)
+zmt$reviews(res_id = mugen$id[1])
+zmt$restaurant(res_id = mugen$id[1])
 
-zmt$locations(query = "Melbourne")
 zmt$locations(query = "Melbourne", -37.8136, 144.9631)
 zmt$location_details(93747, "zone")
 
